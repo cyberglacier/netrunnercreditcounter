@@ -71,9 +71,9 @@ class MainActivity : ComponentActivity() {
         binding.icon.setOnClickListener {
             it.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             android.app.AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog)
-                .setTitle("Einstellungen")
-                .setMessage("Was möchtest du tun?")
-                .setPositiveButton("Reset auf 5") { _, _ ->
+                .setTitle("Settings")
+                .setMessage("")
+                .setPositiveButton("Reset to 5") { _, _ ->
                     creditsscoretop = 5
                     creditsscorebottom = 5
 
@@ -91,7 +91,7 @@ class MainActivity : ComponentActivity() {
                 .setNeutralButton(if (isDarkMode) "Light Mode" else "Dark Mode") {_,_ ->
                     toggleTheme()
                 }
-                .setNegativeButton("Zurück", null)
+                .setNegativeButton("Back", null)
                 .show()
         }
     }
