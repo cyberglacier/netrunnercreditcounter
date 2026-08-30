@@ -1,173 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/blacklayout"
+    android:id="@+id/rootlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
     android:keepScreenOn="true">
 
-    <!-- OBERER SPIELER -->
     <LinearLayout
-        android:id="@+id/toplayout"
+        android:id="@+id/blacklayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical">
 
-        <!-- FrameLayout hält das Layout stabil -->
-        <Button
-            android:id="@+id/plustop"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="0dp"
-            android:background="@color/black"
-            android:elevation="0dp"
-            android:fontFamily="@font/orbitron_medium"
-            android:stateListAnimator="@null"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="96sp" />
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/creditstop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:autoSizeTextType="uniform"
-                android:fontFamily="@font/orbitron_medium"
-                android:gravity="center"
-                android:maxLines="1"
-                android:rotation="180"
-                android:text="5"
-                android:textColor="@color/white"
-                android:textSize="90sp" />
-
-            <TextView
-                android:id="@+id/changetop"
-                android:layout_width="wrap_content"
-                android:layout_height="23dp"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginBottom="30dp"
-                android:fontFamily="@font/orbitron_medium"
-                android:rotation="180"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                android:visibility="invisible"
-                tools:text="+2"
-                tools:visibility="visible" />
-        </FrameLayout>
-
-        <Button
-            android:id="@+id/minustop"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="30dp"
-            android:background="@color/black"
-            android:elevation="0dp"
-            android:fontFamily="@font/orbitron_medium"
-            android:stateListAnimator="@null"
-            android:text="-"
-            android:textColor="@color/white"
-            android:textSize="96sp" />
-    </LinearLayout>
-
-    <!-- MITTE (Logo) -->
-    <LinearLayout
-        android:id="@+id/middlelayout"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+        <LinearLayout
+            android:id="@+id/toplayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="50dp"
             android:layout_weight="1"
-            android:src="@drawable/credit"
-            android:tint="@color/white" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-    </LinearLayout>
-
-    <!-- UNTERER SPIELER -->
-
-    <LinearLayout
-        android:id="@+id/bottomlayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/minusbottom"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:background="@color/black"
-            android:fontFamily="@font/orbitron_medium"
-            android:shadowColor="@color/white"
-            android:stateListAnimator="@null"
-            android:text="-"
-            android:textColor="@color/white"
-            android:textSize="96sp" />
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/creditsbottom"
-                android:layout_width="match_parent"
+            <!-- FrameLayout hält das Layout stabil -->
+            <Button
+                android:id="@+id/plustop"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:autoSizeTextType="uniform"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="0dp"
+                android:background="@color/black"
+                android:elevation="0dp"
                 android:fontFamily="@font/orbitron_medium"
-                android:gravity="center"
-                android:maxLines="1"
-                android:text="5"
+                android:stateListAnimator="@null"
+                android:text="+"
                 android:textColor="@color/white"
-                android:textSize="90sp" />
+                android:textSize="96sp" />
 
-            <TextView
-                android:id="@+id/changebottom"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/creditstop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/orbitron_medium"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:rotation="180"
+                    android:text="5"
+                    android:textColor="@color/white"
+                    android:textSize="90sp" />
+
+                <TextView
+                    android:id="@+id/changetop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/orbitron_medium"
+                    android:rotation="180"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:visibility="invisible"
+                    tools:text="+2"
+                    tools:visibility="visible" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/minustop"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|center_horizontal"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="30dp"
+                android:background="@color/black"
+                android:elevation="0dp"
                 android:fontFamily="@font/orbitron_medium"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                android:visibility="invisible"
-                tools:text="+3"
-                tools:visibility="visible" />
-        </FrameLayout>
+                android:stateListAnimator="@null"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="96sp" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/plusbottom"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:background="@color/black"
-            android:fontFamily="@font/orbitron_medium"
-            android:shadowColor="@color/white"
-            android:stateListAnimator="@null"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="96sp" />
+        <LinearLayout
+            android:id="@+id/middlelayout"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/credit"
+                android:tint="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomlayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="50dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/minusbottom"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:background="@color/black"
+                android:fontFamily="@font/orbitron_medium"
+                android:shadowColor="@color/white"
+                android:stateListAnimator="@null"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="96sp" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/creditsbottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/orbitron_medium"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="5"
+                    android:textColor="@color/white"
+                    android:textSize="90sp" />
+
+                <TextView
+                    android:id="@+id/changebottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/orbitron_medium"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:visibility="invisible"
+                    tools:text="+3"
+                    tools:visibility="visible" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/plusbottom"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="30dp"
+                android:background="@color/black"
+                android:fontFamily="@font/orbitron_medium"
+                android:shadowColor="@color/white"
+                android:stateListAnimator="@null"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="96sp" />
+        </LinearLayout>
+
     </LinearLayout>
-</LinearLayout>
+
+</FrameLayout>

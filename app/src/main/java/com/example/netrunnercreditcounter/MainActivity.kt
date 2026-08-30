@@ -8,6 +8,9 @@ import androidx.activity.ComponentActivity
 import com.example.netrunnercreditcounter.databinding.ActivityMainBinding
 import android.os.Handler
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.FrameLayout.LayoutParams
+import android.widget.ImageView
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -34,6 +37,7 @@ class MainActivity : ComponentActivity() {
         accumulatedChangeBottom = 0
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -41,17 +45,20 @@ class MainActivity : ComponentActivity() {
         hideSystemUI()
 
 
-//Setup für alle Buttons mit der neuen Hilfsfunktion
+
+//Setup of all the buttons that are using the helpfunction
         setupAutoRepeat(binding.plustop) {
             creditsscoretop++
             binding.creditstop.text = creditsscoretop.toString()
             updateChangetop(1)
+            showCreditAnimation(binding.plustop, true)
         }
         setupAutoRepeat(binding.minustop) {
             if (creditsscoretop > 0) {
                 creditsscoretop--
                 binding.creditstop.text = creditsscoretop.toString()
                 updateChangetop(-1)
+                showCreditDeclineAnimation(binding.minustop, true)
             }
         }
 
@@ -59,6 +66,8 @@ class MainActivity : ComponentActivity() {
             creditsscorebottom++
             binding.creditsbottom.text = creditsscorebottom.toString()
             updatechangebottom(1)
+            showCreditAnimation(binding.plusbottom, false)
+
         }
 
         setupAutoRepeat(binding.minusbottom) {
@@ -66,6 +75,7 @@ class MainActivity : ComponentActivity() {
                 creditsscorebottom--
                 binding.creditsbottom.text = creditsscorebottom.toString()
                 updatechangebottom(-1)
+                showCreditDeclineAnimation(binding.minusbottom, false)
             }
         }
         binding.icon.setOnClickListener {
@@ -128,7 +138,7 @@ class MainActivity : ComponentActivity() {
             override fun run() {
                 action()
                 view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
-                handler.postDelayed(this, 100)
+                handler.postDelayed(this, 250)
             }
         }
         view.setOnTouchListener { v, event ->
@@ -137,7 +147,7 @@ class MainActivity : ComponentActivity() {
                     handler.removeCallbacks(runnable)
                     action()
                     v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
-                    handler.postDelayed(runnable, 500)
+                    handler.postDelayed(runnable, 300)
                 }
 
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
@@ -157,17 +167,17 @@ class MainActivity : ComponentActivity() {
     private fun applyTheme() {
         val bgcolor = if (isDarkMode) Color.BLACK else Color.WHITE
         val fgColor = if (isDarkMode) Color.WHITE else Color.BLACK
-        //Hintergrund der App anpassen
+        //Configure the bg of the app
         binding.blacklayout.setBackgroundColor(bgcolor)
 
-        //Textfarben
+        //Configure the textcolor
         val textViews   = listOf(
             binding.creditstop, binding.creditsbottom,
             binding.changetop, binding.changebottom
         )
         textViews.forEach { it.setTextColor(fgColor)}
 
-        // Alle Buttons anpassen
+        // Configure the colorscheme of the buttons - here the bgcolor needs to be changed as well
         val buttons = listOf(
             binding.plustop, binding.minustop,
             binding.plusbottom, binding.minusbottom
@@ -199,4 +209,109 @@ class MainActivity : ComponentActivity() {
         }
 
     }
-}
+
+    private fun showCreditAnimation(anchorView: View, isTop: Boolean) {
+        val iconSize    = (24 * resources.displayMetrics.density).toInt()
+        val startOffset = (100 * resources.displayMetrics.density) // der offset wird in Wahrheit nicht gebraucht, da nun die Startpunkte an den Kanten des Symbols sind, aber will es dennoch drinnen lassen
+        val travelDist  = (-100 * resources.displayMetrics.density)
+        val rngValueAnimation = kotlin.random.Random.nextInt(-iconSize, iconSize) / 2
+
+    val creditView = ImageView(this).apply {
+        setImageResource(R.drawable.credit)
+        setColorFilter(if (isDarkMode) Color.WHITE else Color.BLACK)
+        layoutParams = LayoutParams(
+            iconSize,
+            iconSize
+        ) //Size, Size daher, weil wir davor die Größe schon oben berechnet haben und es in dem Fall ne Variable war
+        if (isTop) rotation = 180f
+    }
+    //Zum Hauptlayout dazugeben
+    binding.rootlayout.addView(creditView)
+
+    // Calculate Positions
+////Find den Code hier ein bisschen ugh
+    val location = IntArray(2)
+    anchorView.getLocationInWindow(location)
+    val rootLocation = IntArray(2)
+    binding.rootlayout.getLocationInWindow(rootLocation)
+    val buttonTop = location[1] - rootLocation[1]
+    val buttonBottom = buttonTop + anchorView.height
+
+    val x = location[0] - rootLocation[0] + (anchorView.width - iconSize) / 2 + rngValueAnimation
+    val y = if (isTop) {
+        buttonBottom + startOffset
+    } else {
+        buttonTop - iconSize - startOffset
+    }
+
+////Find den Code hier ein bisschen ugh
+        creditView.x = x.toFloat()
+        creditView.y = y.toFloat()
+
+
+     val translationY = if (isTop) travelDist else -travelDist
+
+     creditView.animate()
+         .translationYBy(translationY)
+         .alpha(0f)
+         .scaleX(2.5f)
+         .scaleY(2.5f)
+         .setDuration(800)
+         .withEndAction {
+             binding.rootlayout.removeView(creditView)
+         }
+         .start()
+
+
+    }
+
+    private fun showCreditDeclineAnimation(anchorView: View, isTop: Boolean) {
+        val iconSize = (24 * resources.displayMetrics.density).toInt()
+        val rngValueAnimation = kotlin.random.Random.nextInt(-iconSize, iconSize) / 2
+        val travelDist  = (100 * resources.displayMetrics.density)
+        val dropOffset = (200 * resources.displayMetrics.density)
+
+        val creditView = ImageView(this).apply {
+            setImageResource(R.drawable.credit)
+            setColorFilter(if (isDarkMode) Color.WHITE else Color.BLACK)
+            layoutParams = LayoutParams(
+                iconSize,
+                iconSize)
+            if (isTop) rotation = 180f
+            }
+
+        binding.rootlayout.addView(creditView)
+
+        val location = IntArray(2)
+        anchorView.getLocationInWindow(location)
+        val rootLocation = IntArray(2)
+        binding.rootlayout.getLocationInWindow(rootLocation)
+        val buttonMinusTop = location[1] - rootLocation[1]
+        val buttonMinusBottom = buttonMinusTop + anchorView.height
+
+
+        val x = location[0] - rootLocation[0] + (anchorView.width - iconSize) / 2 + rngValueAnimation
+        val y = if (isTop) {
+            buttonMinusBottom
+        } else {
+            buttonMinusTop - iconSize
+        }
+
+        creditView.x = x.toFloat()
+        creditView.y = y.toFloat()
+
+
+        val translationY = if (isTop) travelDist else -travelDist
+
+        creditView.animate()
+            .translationYBy(translationY)
+            .alpha(0f)
+            .scaleX(0.25f)
+            .scaleY(0.25f)
+            .setDuration(800)
+            .withEndAction {
+                binding.rootlayout.removeView(creditView)
+            }
+            .start()
+        }
+    }
