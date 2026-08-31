@@ -5,7 +5,6 @@
     android:id="@+id/rootlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     android:orientation="vertical"
     android:keepScreenOn="true">
 
@@ -15,25 +14,26 @@
         android:orientation="vertical">
 
         <View
-            android:id="@+id/corp_menu"
+            android:id="@+id/runnerSide"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/black"
-            />
+            android:layout_weight="1"
+            android:background="@color/black" />
 
         <View
-            android:id="@+id/runner_menu"
+            android:id="@+id/corpSide"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/black"
-            />
+            android:layout_weight="1"
+            android:background="@color/black" />
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/blacklayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@android:color/transparent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -53,7 +53,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="0dp"
-                android:background="@color/black"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
                 android:elevation="0dp"
                 android:fontFamily="@font/orbitron_medium"
                 android:stateListAnimator="@null"
@@ -64,7 +65,8 @@
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                tools:ignore="NestedWeights">
 
                 <TextView
                     android:id="@+id/creditstop"
@@ -101,7 +103,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="30dp"
-                android:background="@color/black"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
                 android:elevation="0dp"
                 android:fontFamily="@font/orbitron_medium"
                 android:stateListAnimator="@null"
@@ -118,7 +121,7 @@
 
             <ImageView
                 android:id="@+id/icon"
-                android:layout_width="180dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
@@ -141,7 +144,8 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:background="@color/black"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
                 android:fontFamily="@font/orbitron_medium"
                 android:shadowColor="@color/white"
                 android:stateListAnimator="@null"
@@ -152,7 +156,8 @@
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                tools:ignore="NestedWeights">
 
                 <TextView
                     android:id="@+id/creditsbottom"
@@ -187,7 +192,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="30dp"
-                android:background="@color/black"
+                android:background="@android:color/transparent"
+                android:backgroundTint="@android:color/transparent"
                 android:fontFamily="@font/orbitron_medium"
                 android:shadowColor="@color/white"
                 android:stateListAnimator="@null"
@@ -197,5 +203,189 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <!-- Runner Color Overlay -->
+    <LinearLayout
+        android:id="@+id/runnerColorOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:alpha="0"
+        android:background="#DD000000"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:focusable="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/orbitron_medium"
+            android:rotation="180"
+            android:text="Runner      Faction"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iconAnarch"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/nsg_anarch" />
+
+                <ImageView
+                    android:id="@+id/iconCriminal"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/nsg_criminal" />
+
+                <ImageView
+                    android:id="@+id/iconShaper"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/nsg_shaper" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+
+    <!-- Corp Color Overlay (Unten) -->
+<LinearLayout
+android:id="@+id/corpColorOverlay"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_gravity="bottom"
+android:background="#DD000000"
+android:orientation="vertical"
+android:padding="20dp"
+android:visibility="gone"
+android:alpha="0"
+android:elevation="10dp"
+android:clickable="true"
+android:focusable="true">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:fontFamily="@font/orbitron_medium"
+    android:text="Corp     Faction"
+    android:textColor="@color/white"
+    android:textSize="20sp" />
+
+<HorizontalScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:scrollbars="none"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iconHB"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/nsg_hb_reduz"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <ImageView
+            android:id="@+id/iconJinteki"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/nsg_jinteki"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <ImageView
+            android:id="@+id/iconNBN"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/nsg_nbn"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <ImageView
+            android:id="@+id/iconWeyland"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/nsg_weyland"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+    </LinearLayout>
+</HorizontalScrollView>
+</LinearLayout>
+
+    <!-- Settings Overlay (Mitte) -->
+<LinearLayout
+android:id="@+id/settingsOverlay"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:background="#EE000000"
+android:orientation="vertical"
+android:padding="24dp"
+android:visibility="gone"
+android:alpha="0"
+android:elevation="15dp"
+android:clickable="true"
+android:focusable="true">
+
+<Button
+    android:id="@+id/btnReset"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/orbitron_medium"
+    android:text="Reset to 5"
+    android:textColor="@color/white"
+    android:backgroundTint="@color/black" />
+
+<Button
+    android:id="@+id/btnToggleTheme"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:fontFamily="@font/orbitron_medium"
+    android:text="Toggle Theme"
+    android:textColor="@color/white"
+    android:backgroundTint="@color/black" />
+
+<Button
+    android:id="@+id/btnBack"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:fontFamily="@font/orbitron_medium"
+    android:text="Back"
+    android:textColor="@color/white"
+    android:backgroundTint="#333333" />
+</LinearLayout>
 
 </FrameLayout>
