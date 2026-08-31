@@ -212,8 +212,8 @@ class MainActivity : ComponentActivity() {
 
     private fun showCreditAnimation(anchorView: View, isTop: Boolean) {
         val iconSize    = (24 * resources.displayMetrics.density).toInt()
-        val startOffset = (100 * resources.displayMetrics.density) // der offset wird in Wahrheit nicht gebraucht, da nun die Startpunkte an den Kanten des Symbols sind, aber will es dennoch drinnen lassen
-        val travelDist  = (-100 * resources.displayMetrics.density)
+        val startOffset = (150 * resources.displayMetrics.density) // der offset wird in Wahrheit nicht gebraucht, da nun die Startpunkte an den Kanten des Symbols sind, aber will es dennoch drinnen lassen
+        val travelDist  = (-150 * resources.displayMetrics.density)
         val rngValueAnimation = kotlin.random.Random.nextInt(-iconSize, iconSize) / 2
 
     val creditView = ImageView(this).apply {
@@ -253,22 +253,24 @@ class MainActivity : ComponentActivity() {
 
      creditView.animate()
          .translationYBy(translationY)
-         .alpha(0f)
-         .scaleX(2.5f)
-         .scaleY(2.5f)
-         .setDuration(800)
+         .alpha(1f)
+         .scaleX(2f)
+         .scaleY(2f)
+         .setDuration(400)
          .withEndAction {
              binding.rootlayout.removeView(creditView)
+
          }
          .start()
+
 
 
     }
 
     private fun showCreditDeclineAnimation(anchorView: View, isTop: Boolean) {
-        val iconSize = (24 * resources.displayMetrics.density).toInt()
+        val iconSize = (40 * resources.displayMetrics.density).toInt()
         val rngValueAnimation = kotlin.random.Random.nextInt(-iconSize, iconSize) / 2
-        val travelDist  = (100 * resources.displayMetrics.density)
+        val travelDist  = (175 * resources.displayMetrics.density)
         val dropOffset = (200 * resources.displayMetrics.density)
 
         val creditView = ImageView(this).apply {
@@ -308,9 +310,10 @@ class MainActivity : ComponentActivity() {
             .alpha(0f)
             .scaleX(0.25f)
             .scaleY(0.25f)
-            .setDuration(800)
+            .setDuration(400)
             .withEndAction {
                 binding.rootlayout.removeView(creditView)
+
             }
             .start()
         }
