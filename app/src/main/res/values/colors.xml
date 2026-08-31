@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="criminal_blue">#4169E1</color>
+    <color name="anarch_orange">#FF4500</color>
+    <color name="shaper_green">#32CD32</color>
+    <color name="jinteki_red">#DC143C</color>
+    <color name="hb_lilac">#8A2BE2</color>
+    <color name="nbn_yellow">#FF8C00</color>
+    <color name="weyland_green">#006400</color>
+
 </resources>

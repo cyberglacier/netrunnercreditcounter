@@ -211,9 +211,9 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun showCreditAnimation(anchorView: View, isTop: Boolean) {
-        val iconSize    = (24 * resources.displayMetrics.density).toInt()
-        val startOffset = (150 * resources.displayMetrics.density) // der offset wird in Wahrheit nicht gebraucht, da nun die Startpunkte an den Kanten des Symbols sind, aber will es dennoch drinnen lassen
-        val travelDist  = (-150 * resources.displayMetrics.density)
+        val iconSize    = (18 * resources.displayMetrics.density).toInt()
+        val startOffset = (155 * resources.displayMetrics.density) // der offset wird in Wahrheit nicht gebraucht, da nun die Startpunkte an den Kanten des Symbols sind, aber will es dennoch drinnen lassen
+        val travelDist  = (-155 * resources.displayMetrics.density)
         val rngValueAnimation = kotlin.random.Random.nextInt(-iconSize, iconSize) / 2
 
     val creditView = ImageView(this).apply {
@@ -254,8 +254,8 @@ class MainActivity : ComponentActivity() {
      creditView.animate()
          .translationYBy(translationY)
          .alpha(1f)
-         .scaleX(2f)
-         .scaleY(2f)
+         .scaleX(2.25f)
+         .scaleY(2.25f)
          .setDuration(400)
          .withEndAction {
              binding.rootlayout.removeView(creditView)

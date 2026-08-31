@@ -10,6 +10,26 @@
     android:keepScreenOn="true">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/corp_menu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/black"
+            />
+
+        <View
+            android:id="@+id/runner_menu"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/black"
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/blacklayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
