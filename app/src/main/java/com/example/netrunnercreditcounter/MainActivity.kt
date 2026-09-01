@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.FrameLayout.LayoutParams
 import android.widget.ImageView
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.res.booleanResource
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -123,6 +124,8 @@ class MainActivity : ComponentActivity() {
             toggleMenus(false)
         }
         binding.btnToggleTheme.setOnClickListener {
+
+            isDarkMode = !isDarkMode
 
             recolorIcons()
             toggleMenus(false)
