@@ -4,10 +4,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="criminal_blue">#194c9b</color>
     <color name="anarch_orange">#e26b35</color>
-    <color name="shaper_green">#4cb148</color>
+    <color name="shaper_green">#228b22</color>
     <color name="jinteki_red">#75071A</color>
     <color name="hb_lilac">#8A2BE2</color>
-    <color name="nbn_yellow">#FF8C00</color>
+    <color name="nbn_yellow">#f4c430</color>
     <color name="weyland_green">#2c382c</color>
 
 </resources>

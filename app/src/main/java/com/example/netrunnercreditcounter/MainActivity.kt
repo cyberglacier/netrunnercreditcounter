@@ -86,15 +86,36 @@ class MainActivity : ComponentActivity() {
 
     private fun setupOverlayLogic() {
         // Runner Faction Klicks
-        binding.iconAnarch.setOnClickListener { setRunnerColor(getColor(R.color.anarch_orange)) }
-        binding.iconCriminal.setOnClickListener { setRunnerColor(getColor(R.color.criminal_blue)) }
-        binding.iconShaper.setOnClickListener { setRunnerColor(getColor(R.color.shaper_green)) }
+        binding.iconAnarch.setOnClickListener {
+            setRunnerColor(getColor(R.color.anarch_orange))
+            binding.runnerSide.visibility = View.VISIBLE
+            binding.blacklayout.setBackgroundColor(android.R.color.transparent)}
+        binding.iconCriminal.setOnClickListener {
+            setRunnerColor(getColor(R.color.criminal_blue))
+            binding.runnerSide.visibility = View.VISIBLE
+            binding.blacklayout.setBackgroundColor(android.R.color.transparent)}
+        binding.iconShaper.setOnClickListener {
+            setRunnerColor(getColor(R.color.shaper_green))
+            binding.corpSide.visibility = View.VISIBLE
+            binding.blacklayout.setBackgroundColor(android.R.color.transparent)}
 
         // Corp Faction Klicks
-        binding.iconHB.setOnClickListener { setCorpColor(getColor(R.color.hb_lilac)) }
-        binding.iconJinteki.setOnClickListener { setCorpColor(getColor(R.color.jinteki_red)) }
-        binding.iconNBN.setOnClickListener { setCorpColor(getColor(R.color.nbn_yellow)) }
-        binding.iconWeyland.setOnClickListener { setCorpColor(getColor(R.color.weyland_green)) }
+        binding.iconHB.setOnClickListener {
+            setCorpColor(getColor(R.color.hb_lilac))
+            binding.corpSide.visibility = View.VISIBLE
+            binding.blacklayout.setBackgroundColor(android.R.color.transparent)}
+        binding.iconJinteki.setOnClickListener {
+            setCorpColor(getColor(R.color.jinteki_red))
+            binding.corpSide.visibility = View.VISIBLE
+            binding.blacklayout.setBackgroundColor(android.R.color.transparent)}
+        binding.iconNBN.setOnClickListener {
+            setCorpColor(getColor(R.color.nbn_yellow))
+            binding.corpSide.visibility = View.VISIBLE
+            binding.blacklayout.setBackgroundColor(android.R.color.transparent)}
+        binding.iconWeyland.setOnClickListener {
+            setCorpColor(getColor(R.color.weyland_green))
+            binding.corpSide.visibility = View.VISIBLE
+            binding.blacklayout.setBackgroundColor(android.R.color.transparent)}
 
         // Settings Buttons
         binding.btnReset.setOnClickListener {
@@ -102,9 +123,27 @@ class MainActivity : ComponentActivity() {
             toggleMenus(false)
         }
         binding.btnToggleTheme.setOnClickListener {
-            toggleTheme()
+
+            recolorIcons()
             toggleMenus(false)
         }
+
+        binding.btndark.setOnClickListener {
+            isDarkMode = true
+            applyTheme()
+            binding.corpSide.visibility = View.INVISIBLE
+            binding.runnerSide.visibility = View.INVISIBLE
+            toggleMenus(show = false)
+        }
+
+        binding.btnlight.setOnClickListener {
+            isDarkMode = false
+            applyTheme()
+            binding.corpSide.visibility = View.INVISIBLE
+            binding.runnerSide.visibility = View.INVISIBLE
+            toggleMenus(show = false)
+        }
+
         binding.btnBack.setOnClickListener {
             toggleMenus(false)
         }
@@ -204,30 +243,37 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun toggleTheme() {
-        isDarkMode = !isDarkMode
-        applyTheme()
-    }
+
 
     private fun applyTheme() {
-        val bgcolor = if (isDarkMode) Color.BLACK else Color.WHITE
+        val bgColor = if (isDarkMode) Color.BLACK else Color.WHITE
         val fgColor = if (isDarkMode) Color.WHITE else Color.BLACK
 
-        binding.blacklayout.setBackgroundColor(Color.TRANSPARENT)
-        binding.rootlayout.setBackgroundColor(bgcolor)
+        binding.blacklayout.setBackgroundColor(bgColor)
 
         listOf(binding.creditstop, binding.creditsbottom, binding.changetop, binding.changebottom).forEach {
             it.setTextColor(fgColor)
         }
         listOf(binding.plustop, binding.minustop, binding.plusbottom, binding.minusbottom).forEach {
             it.setTextColor(fgColor)
-            it.setBackgroundColor(bgcolor)
         }
         binding.icon.setColorFilter(fgColor)
 
         val controller = WindowCompat.getInsetsController(window, binding.root)
         controller.isAppearanceLightStatusBars = !isDarkMode
         controller.isAppearanceLightNavigationBars = !isDarkMode
+    }
+
+    private fun recolorIcons()  {
+
+        val fgColor = if (isDarkMode) Color.WHITE else Color.BLACK
+
+        listOf(binding.creditstop, binding.creditsbottom, binding.changetop, binding.changebottom,
+            binding.plustop, binding.minustop, binding.plusbottom, binding.minusbottom).forEach {
+            it.setTextColor(fgColor)
+        }
+        binding.icon.setColorFilter(fgColor)
+
     }
 
     private fun hideSystemUI() {

@@ -380,6 +380,26 @@ android:focusable="true">
     android:textColor="@color/white"
     android:backgroundTint="@color/black" />
 
+    <Button
+        android:id="@+id/btndark"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/orbitron_medium"
+        android:text="Dark Mode"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"/>
+
+    <Button
+        android:id="@+id/btnlight"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/orbitron_medium"
+        android:text="Light Mode"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"/>
+
 <Button
     android:id="@+id/btnBack"
     android:layout_width="200dp"
