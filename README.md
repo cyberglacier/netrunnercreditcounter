@@ -8,4 +8,6 @@ can be found under: https://nullsignal.games/about/nsg-visual-assets/
 
 You can find and download the APK for the credit counter under: https://github.com/cyberglacier/netrunnercreditcounter/tree/master/app
 
+The newest stable apk version is in the color-expansion branch: https://github.com/cyberglacier/netrunnercreditcounter/tree/Color-Expansion/app  
+
 If you have any feedback don't hesitate to contact me.
