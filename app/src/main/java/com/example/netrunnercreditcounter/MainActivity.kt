@@ -97,7 +97,7 @@ class MainActivity : ComponentActivity() {
             binding.blacklayout.setBackgroundColor(android.R.color.transparent)}
         binding.iconShaper.setOnClickListener {
             setRunnerColor(getColor(R.color.shaper_green))
-            binding.corpSide.visibility = View.VISIBLE
+            binding.runnerSide.visibility = View.VISIBLE
             binding.blacklayout.setBackgroundColor(android.R.color.transparent)}
 
         // Corp Faction Klicks
@@ -205,7 +205,7 @@ class MainActivity : ComponentActivity() {
             binding.changetop.text = "$sign$accumulatedChangeTop"
             binding.changetop.visibility = View.VISIBLE
             handler.removeCallbacks(hideChangeTop)
-            handler.postDelayed(hideChangeTop, 2000)
+            handler.postDelayed(hideChangeTop, 1000)
         }
     }
 
@@ -218,7 +218,7 @@ class MainActivity : ComponentActivity() {
             binding.changebottom.text = "$sign$accumulatedChangeBottom"
             binding.changebottom.visibility = View.VISIBLE
             handler.removeCallbacks(hideChangeBottom)
-            handler.postDelayed(hideChangeBottom, 2000)
+            handler.postDelayed(hideChangeBottom, 1000)
         }
     }
 
