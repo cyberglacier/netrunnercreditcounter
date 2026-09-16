@@ -205,7 +205,7 @@ class MainActivity : ComponentActivity() {
             binding.changetop.text = "$sign$accumulatedChangeTop"
             binding.changetop.visibility = View.VISIBLE
             handler.removeCallbacks(hideChangeTop)
-            handler.postDelayed(hideChangeTop, 1000)
+            handler.postDelayed(hideChangeTop, 2000)
         }
     }
 
@@ -218,7 +218,7 @@ class MainActivity : ComponentActivity() {
             binding.changebottom.text = "$sign$accumulatedChangeBottom"
             binding.changebottom.visibility = View.VISIBLE
             handler.removeCallbacks(hideChangeBottom)
-            handler.postDelayed(hideChangeBottom, 1000)
+            handler.postDelayed(hideChangeBottom, 2000)
         }
     }
 
